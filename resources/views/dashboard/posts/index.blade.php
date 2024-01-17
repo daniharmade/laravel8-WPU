@@ -30,8 +30,14 @@
                             <td>
                                 <a href="/dashboard/posts/{{ $post->slug }}" class="btn btn-primary"> <i
                                         class="bi bi-exclamation-circle"></i></a>
-                                <a href="#" class="btn btn-warning"> <i class="bi bi-pencil-square"></i></a>
-                                <a href="#" class="btn btn-danger"> <i class="bi bi-trash"></i></a>
+                                <a href="/dashboard/posts/{{ $post->slug }}/edit" class="btn btn-warning"> <i
+                                        class="bi bi-pencil-square"></i></a>
+                                <form action="/dashboard/posts/{{ $post->slug }}" method="post" class="d-inline">
+                                    @method('delete')
+                                    @csrf
+                                    <button class="btn btn-danger" onclick="return confirm('Are You Sure?')"><i
+                                            class="bi bi-trash"></i></button>
+                                </form>
                             </td>
                         </tr>
                     @endforeach
